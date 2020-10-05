@@ -43,16 +43,13 @@ class Student
     end
   end
   
-<<<<<<< HEAD
+
   def self.create(name, grade)
-=======
-  def self.create(name:, grade:)
->>>>>>> a4770f61d227168521d993f3f734c96da4579693
     student = Student.new(name, grade)
     student.save
     student
   end
-<<<<<<< HEAD
+
   
   def self.new_from_db(row)
     grade = row[0]
