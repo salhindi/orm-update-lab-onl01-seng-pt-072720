@@ -43,12 +43,13 @@ class Student
     end
   end
   
+
   def self.create(name, grade)
     student = Student.new(name, grade)
     student.save
     student
   end
-  
+
   def self.new_from_db(row)
     grade = row[0]
     id = row[1]
@@ -62,6 +63,11 @@ class Student
     result = DB[:conn].execute(sql, name).map do |r| 
     new_from_db(r)
     end.first 
+  end
+ 
+  def self.find_by_name(name)
+    sql = "SELECT * FROM students WHERE name = ?"
+    DB[:conn].execute(sql, name).map {|r| new_from_db(r)}.first
   end
 
   def update
